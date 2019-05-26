@@ -10,8 +10,8 @@ public class MainClass {
 	public static void main(String[] args) throws InterruptedException {
 		
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.gecko.driver","C:/Users/Toshiba/Downloads/geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver","C:/Users/Toshiba/Downloads/chromedriver_74.exe");
+		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.koton.com/tr/");
 		//Assert.assertTrue(driver.getTitle().contains("koton")); // doðrulama 
 		driver.manage().window().maximize();
@@ -20,7 +20,15 @@ public class MainClass {
 		searchElement.sendKeys("bluz"); 
 		searchElement.submit();
 		Thread.sleep(9000);
+		
+		WebElement xsElement = driver.findElement(By.xpath(".//div[@class='productListFilter']//div[@class='filterWrapper'][4]//li[@class='show']//label[@for='XS']"));
+				
+		if (!xsElement.isSelected()) {
+			xsElement.click();
+		}
+
 		driver.quit();
+		
 	}
 
 }
